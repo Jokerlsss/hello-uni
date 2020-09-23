@@ -1,0 +1,94 @@
+{
+	"easycom": {
+		// 下载安装的方式需要前面的"@/"，npm安装的方式无需"@/"
+		// 下载安装方式
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+		// npm安装方式
+		// "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		{
+			"path":"pages/login/index",
+			"style":{
+				// "navigationBarTextStyle": "white",
+				// "navigationBarTitleText": "登 录",
+				// "navigationBarBackgroundColor": "#FF5242",
+				// "backgroundColor": "#FFFFFF",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+		    "path" : "pages/form/index",
+		    "style" : {}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"h5": {
+					// h5 中的下拉刷新样式
+					"pullToRefresh": {
+						"color": "red"
+					}
+				}
+			}
+		},
+	    {
+            "path" : "pages/sup-material-out/index",
+            "style" : {}
+        }		
+    ],
+	"globalStyle": {
+		// "navigationBarTextStyle": "white",
+		// // 全局默认标题栏头部
+		// "navigationBarTitleText": "智能管控系统",
+		// "navigationBarBackgroundColor": "#FF5242",
+		// "backgroundColor": "#FFFFFF",
+		// 下拉刷新
+		// "enablePullDownRefresh": "true",
+		"navigationBarShadow": "grey",
+		
+		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
+		"onReachBottomDistance": 50,
+		"navigationStyle":"default",
+		"app-plus":{
+			// adjustPan: 界面会随键盘弹起而增加滚动条,
+			// adjustResize：界面会固定不动
+			"softinputMode": "adjustResize"
+		}
+	},
+	"tabBar": {
+		"color": "#333333",
+		"selectedColor": "#199edb",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		// "blurEffect":"light",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "审批",
+			"iconPath": "static/img/index.png",
+			"selectedIconPath": "static/img/index.png"
+
+		}, {
+			"pagePath": "pages/mine/index",
+			"text": "我的",
+			"iconPath": "static/img/index.png",
+			"selectedIconPath": "static/img/index.png"
+		},{
+			"pagePath": "pages/form/index",
+			"text": "表单",
+			"iconPath": "static/img/index.png",
+			"selectedIconPath": "static/img/index.png"
+		}]
+	},
+	"usingComponents": {
+		"v-no-more": "./components/v-no-more/v-no-more",
+		"v-form-menu": "./components/v-form-menu/v-form-menu",
+		"v-input": "./components/v-input/v-input"
+	}
+}
