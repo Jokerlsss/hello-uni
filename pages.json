@@ -10,16 +10,9 @@
 		{
 			"path":"pages/login/index",
 			"style":{
-				// "navigationBarTextStyle": "white",
-				// "navigationBarTitleText": "登 录",
-				// "navigationBarBackgroundColor": "#FF5242",
-				// "backgroundColor": "#FFFFFF",
+				"enablePullDownRefresh": "false",
 				"navigationStyle":"custom"
 			}
-		},
-		{
-		    "path" : "pages/form/index",
-		    "style" : {}
 		},
 		{
 			"path": "pages/index/index",
@@ -27,6 +20,14 @@
 				"enablePullDownRefresh": true
 			}
 		},
+		
+		{
+		    "path" : "pages/form/index",
+		    "style" : {
+				"enablePullDownRefresh": "true"
+			}
+		},
+		
 		{
 			"path": "pages/mine/index",
 			"style": {
@@ -40,17 +41,19 @@
 		},
 	    {
             "path" : "pages/sup-material-out/index",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "辅材出库"
+			}
         }		
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",
 		// // 全局默认标题栏头部
-		// "navigationBarTitleText": "智能管控系统",
-		// "navigationBarBackgroundColor": "#FF5242",
-		// "backgroundColor": "#FFFFFF",
+		"navigationBarTitleText": "智能管控系统",
+		"navigationBarBackgroundColor": "#FF5242",
+		"backgroundColor": "#FFFFFF",
 		// 下拉刷新
-		// "enablePullDownRefresh": "true",
+		"enablePullDownRefresh": "true",
 		"navigationBarShadow": "grey",
 		
 		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
@@ -64,7 +67,7 @@
 	},
 	"tabBar": {
 		"color": "#333333",
-		"selectedColor": "#199edb",
+		"selectedColor": "#FF5242",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		// "blurEffect":"light",

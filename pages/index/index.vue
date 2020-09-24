@@ -1,16 +1,19 @@
 <template>
 	<view class="container">
 		
-		<v-skeleton :row="1" title animate :loading="loading">
+		<!-- <v-skeleton :row="1" title animate :loading="loading">
 			<view>
 				展示 Toast<br>
 				这是一条长的Toast的使用方法
 			</view>
-		</v-skeleton>
+		</v-skeleton> -->
 		<!-- <view class="list" v-for="(item,index) of list" :key="index">
 			{{item}}
 		</view> -->
-		<v-no-more v-if="isBottom"></v-no-more>
+		<!-- <v-no-more v-if="isBottom"></v-no-more> -->
+		
+		<u-input type="text" placeholder="用户名" :border="true"/>
+		<u-input type="password" placeholder="密码" :border="true"/>
 	</view>
 </template>
 
