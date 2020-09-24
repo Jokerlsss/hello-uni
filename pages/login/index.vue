@@ -1,5 +1,5 @@
 <template>
-	<view class="container" :animation="animationData" :style="(ispdFocus || isuserFocus)?containerHeight.focus:containerHeight.blur">
+	<view class="container" :style="(ispdFocus || isuserFocus)?containerHeight.focus:containerHeight.blur">
 		<view class="input-area">
 			<view class="user-icon">
 				<image :src="userImg" :style="isDisabledBtn?'opacity:0.5':'opacity:1'"></image>
@@ -10,7 +10,7 @@
 					帐 号
 				</view>
 
-				<u-input id="userInput" :focus="un" v-model="userLoginInfo.userName" type="text" class="input" :height="100"
+				<u-input id="userInput" v-model="userLoginInfo.userName" type="text" class="input" :height="100"
 				 placeholder="" :custom-style="customStyle" :clearable="false" @focus="userFocus" @blur="userBlur" />
 
 				<view class="clear" @click="clearInput('userName')" v-show="userLoginInfo.userName!=='' && isuserFocus">
@@ -22,7 +22,7 @@
 					密 码
 				</view>
 
-				<u-input id="pdInput" :focus="pd" v-model="userLoginInfo.password" type="password" @input="inputEvent($event)"
+				<u-input id="pdInput" v-model="userLoginInfo.password" type="password"
 				 :password-icon="false" class="input" :height="100" placeholder="" :maxlength="pdMaxLength" :custom-style="customStyle"
 				 :clearable="false" @focus="pdFocus" @blur="pdBlur" />
 
@@ -121,72 +121,43 @@
 				// 点击登录按钮后，接口返回数据前，对该操作上锁
 				isLogining: false,
 
-				un: false,
-				pd: false
+				// un: false,
+				// pd: false,
+
+				isDisabledBtn: true
 			}
 		},
-		computed:{
+		computed: {
 			// 按钮是否禁用
 			// 注意：不能写在 data 中，否则当第一次进来就已经保存了上次登录的信息时，
 			// 		不会触发 watch 中的 isDisabledBtn，导致按钮不可用
-			isDisabledBtn(){
-				if(this.userLoginInfo.userName!=='' && this.userLoginInfo.password!==''){
-					return false
-				}else{
-					return true
-				}
-			}
+			// isDisabledBtn(){
+			// 	if(this.userLoginInfo.userName!=='' && this.userLoginInfo.password!==''){
+			// 		return false
+			// 	}else{
+			// 		return true
+			// 	}
+			// }
 		},
 		methods: {
-			// 输入时，将文本转换为密文
-			/**
-			 * e: 实时输入的内容
-			 * password: 需要上传至后端的字符串
-			 * password_secret: 展示加密样式的字符串
-			 */
-			inputEvent(e) {
-				// 1. 判断当前是删除还是新输入（新输入：e.length > password.length）
-				// if (e.length <= this.pdMaxLength) {
-				// 	if (e.length > this.userLoginInfo.password.length) {
-				// 		// 2. 	新输入：取最新输入的最后一位
-				// 		// 3.   附加给 password 上
-				// 		this.userLoginInfo.password += e.substring(e.length - 1)
-				// 	} else {
-				// 		// 4.	删除：按 password 最后一位开始减
-				// 		this.userLoginInfo.password = this.userLoginInfo.password.substring(0, e.length)
-				// 	}
-				// }
-				// 	// 5. 在输入并在数据更新后，再进行加密
-				// 	// 必须要用 nextTick，否则会导致可能丢失部分字符
-				// this.$nextTick(() => {
-				// 		this.userLoginInfo.password_secret = this.userLoginInfo.password.replace(/./g, '●')
-				// })
-			},
 			userFocus() {
 				// 是否在焦点上
 				this.isuserFocus = true
-				this.ispdFocus = false
-				console.log('user 获取焦点')
 			},
 			userBlur() {
-				this.un = false
-				
+				// this.un = false
+
 				setTimeout(() => {
-					console.log('user 延迟失去焦点')
 					this.isuserFocus = false
 				}, 1)
 			},
 
 			pdFocus() {
 				this.ispdFocus = true
-				console.log('pd 获取焦点')
-				// this.isuserFocus = false
 			},
 			pdBlur() {
-				this.pd = false
 				// 失去焦点事件先于清除事件触发，因此让其延迟即可先触发 clearInput 事件
 				setTimeout(() => {
-					console.log('pd 延迟失去焦点')
 					this.ispdFocus = false
 				}, 1)
 			},
@@ -199,13 +170,13 @@
 						setTimeout(() => {
 							this.userLoginInfo.userName = ''
 							// 控制清空后，焦点仍停留在当前
-							this.un = true
+							// this.un = true
 						}, 2)
 						break
 					case 'password':
 						setTimeout(() => {
 							this.userLoginInfo.password = ''
-							this.pd = true
+							// this.pd = true
 						}, 2)
 						break
 				}

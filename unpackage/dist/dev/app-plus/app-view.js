@@ -228,11 +228,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-uni-view",
-    {
-      staticClass: _vm._$g(0, "sc"),
-      style: _vm._$g(0, "s"),
-      attrs: { animation: _vm._$g(0, "a-animation"), _i: 0 }
-    },
+    { staticClass: _vm._$g(0, "sc"), style: _vm._$g(0, "s"), attrs: { _i: 0 } },
     [
       _c(
         "v-uni-view",
@@ -322,9 +318,6 @@ var render = function() {
                 staticClass: _vm._$g(11, "sc"),
                 attrs: { id: "pdInput", _i: 11 },
                 on: {
-                  input: function($event) {
-                    return _vm.$handleViewEvent($event)
-                  },
                   focus: function($event) {
                     return _vm.$handleViewEvent($event)
                   },
@@ -335,7 +328,7 @@ var render = function() {
                 model: {
                   value: _vm._$g(11, "v-model"),
                   callback: function() {},
-                  expression: "userLoginInfo.password_secret"
+                  expression: "userLoginInfo.password"
                 }
               }),
               _c(
