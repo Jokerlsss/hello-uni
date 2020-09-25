@@ -10,12 +10,8 @@
 					帐 号
 				</view>
 
-				<u-input :focus="un" v-model="userLoginInfo.userName" type="text" :height="100" placeholder=""
-				 :custom-style="customStyle" :clearable="false" @focus="userFocus" @blur="userBlur" />
-
-				<view class="clear" @click="clearInput('userName')" v-show="userLoginInfo.userName!=='' && isuserFocus">
-					<image :src="clearImg" class="img"></image>
-				</view>
+				<u-input v-model="userLoginInfo.userName" type="text" :height="100" placeholder="" :custom-style="customStyle"
+				 :clearable="false" @focus="userFocus" @blur="userBlur" />
 			</view>
 			<!-- 密码输入框 -->
 			<view class="input-text" :style="ispdFocus?input_boder_style.focus:input_boder_style.blur">
@@ -23,12 +19,8 @@
 					密 码
 				</view>
 
-				<u-input :focus="pd" @input = "inputEvent($event)" v-model="userLoginInfo.password_secret" type="text" :password-icon="false" :height="100"
-				 placeholder="" :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
-
-				<view class="clear" @click="clearInput('password')" v-show="userLoginInfo.password!=='' && ispdFocus">
-					<image :src="clearImg" class="img"></image>
-				</view>
+				<u-input v-model="userLoginInfo.password" type="password" :password-icon="false" :height="100" placeholder=""
+				 :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
 			</view>
 
 			<!-- 登录按钮 -->
@@ -50,8 +42,7 @@
 				// ------------- 其他 -------------
 				userLoginInfo: {
 					userName: '',
-					password: '',
-					password_secret:''
+					password: ''
 				},
 
 				// 整体容器高度，单位 rpx
@@ -59,7 +50,7 @@
 				// containerHeight: 1000,
 				containerHeight: {
 					focus: 'height:800rpx;transition:0.2s',
-					blur: 'height:800rpx;transition:0.2s'
+					blur: 'height:1300rpx;transition:0.2s'
 				},
 
 				// 获取焦点时，整体上移的动画效果
@@ -124,92 +115,23 @@
 				// 点击登录按钮后，接口返回数据前，对该操作上锁
 				isLogining: false,
 
-				un: false,
-				pd: false,
-
 				isDisabledBtn: true
 			}
 		},
-		computed: {
-			// 按钮是否禁用
-			// 注意：不能写在 data 中，否则当第一次进来就已经保存了上次登录的信息时，
-			// 		不会触发 watch 中的 isDisabledBtn，导致按钮不可用
-			// isDisabledBtn(){
-			// 	if(this.userLoginInfo.userName!=='' && this.userLoginInfo.password!==''){
-			// 		return false
-			// 	}else{
-			// 		return true
-			// 	}
-			// }
-		},
 		methods: {
-			inputEvent(e) {
-							// 1. 判断当前是删除还是新输入（新输入：e.length > password.length）
-							if (e.length <= this.pdMaxLength) {
-								if (e.length > this.userLoginInfo.password.length) {
-									// 2. 	新输入：取最新输入的最后一位
-									// 3.   附加给 password 上
-									this.userLoginInfo.password += e.substring(e.length - 1)
-								} else {
-									// 4.	删除：按 password 最后一位开始减
-									this.userLoginInfo.password = this.userLoginInfo.password.substring(0, e.length)
-								}
-							}
-								// 5. 在输入并在数据更新后，再进行加密
-								// 必须要用 nextTick，否则会导致可能丢失部分字符
-							this.$nextTick(() => {
-									this.userLoginInfo.password_secret = this.userLoginInfo.password.replace(/./g, '●')
-							})
-						},
 			userFocus() {
 				// 是否在焦点上
 				this.isuserFocus = true
-
-				this.un = true
-				this.pd = false
 			},
 			userBlur() {
-				setTimeout(() => {
-					this.isuserFocus = false
-				}, 1)
+				this.isuserFocus = false
 			},
 
 			pdFocus() {
 				this.ispdFocus = true
-
-				this.pd = true
-				this.un = false
 			},
 			pdBlur() {
-				// 失去焦点事件先于清除事件触发，因此让其延迟即可先触发 clearInput 事件
-				setTimeout(() => {
-					this.ispdFocus = false
-				}, 1)
-			},
-
-			// 清除 input 内容
-			clearInput(value) {
-				switch (value) {
-					case 'userName':
-						setTimeout(() => {
-							this.userLoginInfo.userName = ''
-							// 清空内容之后保持焦点
-							this.un = false
-							this.$nextTick(()=>{
-								this.un = true
-							})
-						}, 2)
-						break
-					case 'password':
-						setTimeout(() => {
-							this.userLoginInfo.password_secret = ''
-							this.pd = false
-							this.$nextTick(()=>{
-								this.pd = true
-							})
-						}, 2)
-						break
-				}
+				this.ispdFocus = false
 			},
 
 			async login() {
@@ -251,10 +173,13 @@
 				}
 			}
 		},
-		onShow() {
-			// 去除状态栏
-			plus.navigator.setFullscreen(true);
-		},
+		/**
+		 * 警惕！！！去除状态栏的代码不可加！会导致 input 框焦点获取逻辑混乱，导致键盘弹出错误。
+		 */
+		// onShow() {
+		// 	// 去除状态栏
+		// 	plus.navigator.setFullscreen(true);
+		// },
 		watch: {
 			userLoginInfo: {
 				handler(newVal, oldVal) {

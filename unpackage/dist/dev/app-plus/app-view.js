@@ -271,54 +271,24 @@ var render = function() {
                   callback: function() {},
                   expression: "userLoginInfo.userName"
                 }
-              }),
-              _c(
-                "v-uni-view",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm._$g(7, "v-show"),
-                      expression: "_$g(7,'v-show')"
-                    }
-                  ],
-                  staticClass: _vm._$g(7, "sc"),
-                  attrs: { _i: 7 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event)
-                    }
-                  }
-                },
-                [
-                  _c("v-uni-image", {
-                    staticClass: _vm._$g(8, "sc"),
-                    attrs: { src: _vm._$g(8, "a-src"), _i: 8 }
-                  })
-                ],
-                1
-              )
+              })
             ],
             1
           ),
           _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(9, "sc"),
-              style: _vm._$g(9, "s"),
-              attrs: { _i: 9 }
+              staticClass: _vm._$g(7, "sc"),
+              style: _vm._$g(7, "s"),
+              attrs: { _i: 7 }
             },
             [
-              _c("v-uni-view", { style: _vm._$g(10, "s"), attrs: { _i: 10 } }, [
+              _c("v-uni-view", { style: _vm._$g(8, "s"), attrs: { _i: 8 } }, [
                 _vm._v("密 码")
               ]),
               _c("u-input", {
-                attrs: { _i: 11 },
+                attrs: { _i: 9 },
                 on: {
-                  input: function($event) {
-                    return _vm.$handleViewEvent($event)
-                  },
                   focus: function($event) {
                     return _vm.$handleViewEvent($event)
                   },
@@ -327,65 +297,38 @@ var render = function() {
                   }
                 },
                 model: {
-                  value: _vm._$g(11, "v-model"),
+                  value: _vm._$g(9, "v-model"),
                   callback: function() {},
-                  expression: "userLoginInfo.password_secret"
+                  expression: "userLoginInfo.password"
                 }
-              }),
-              _c(
-                "v-uni-view",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm._$g(12, "v-show"),
-                      expression: "_$g(12,'v-show')"
-                    }
-                  ],
-                  staticClass: _vm._$g(12, "sc"),
-                  attrs: { _i: 12 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event)
-                    }
-                  }
-                },
-                [
-                  _c("v-uni-image", {
-                    staticClass: _vm._$g(13, "sc"),
-                    attrs: { src: _vm._$g(13, "a-src"), _i: 13 }
-                  })
-                ],
-                1
-              )
+              })
             ],
             1
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
+            { staticClass: _vm._$g(10, "sc"), attrs: { _i: 10 } },
             [
               _c(
                 "u-button",
                 {
-                  attrs: { _i: 15 },
+                  attrs: { _i: 11 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event)
                     }
                   }
                 },
-                [_vm._v(_vm._$g(15, "t0-0"))]
+                [_vm._v(_vm._$g(11, "t0-0"))]
               )
             ],
             1
           ),
-          _c("u-toast", { ref: "uToast", attrs: { _i: 16 } })
+          _c("u-toast", { ref: "uToast", attrs: { _i: 12 } })
         ],
         1
       ),
-      _c("v-uni-view", { staticClass: _vm._$g(17, "sc"), attrs: { _i: 17 } }, [
+      _c("v-uni-view", { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } }, [
         _vm._v("CopyRight 2020.09.20 FZYK")
       ])
     ],

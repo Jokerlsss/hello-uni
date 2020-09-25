@@ -58,12 +58,13 @@
 		
 		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
 		"onReachBottomDistance": 50,
-		"navigationStyle":"default",
-		"app-plus":{
-			// adjustPan: 界面会随键盘弹起而增加滚动条,
-			// adjustResize：界面会固定不动
-			"softinputMode": "adjustResize"
-		}
+		"navigationStyle":"default"
+		// ! 警告：app-plus 的 sofinputMode 不要加！！！不然 input 框的焦点和键盘的弹起逻辑会变得捉摸不透！（处于猜测阶段，不一定就是因为该属性）
+		// "app-plus":{
+		// 	// adjustPan: 界面会随键盘弹起而增加滚动条,
+		// 	// adjustResize：界面会固定不动
+		// 	"softinputMode": "adjustResize"
+		// }
 	},
 	"tabBar": {
 		"color": "#333333",

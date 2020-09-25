@@ -10,7 +10,7 @@
 					帐 号
 				</view>
 
-				<u-input :focus="un" v-model="userLoginInfo.userName" type="text" class="input" :height="100" placeholder=""
+				<u-input :focus="un" v-model="userLoginInfo.userName" type="text" :height="100" placeholder=""
 				 :custom-style="customStyle" :clearable="false" @focus="userFocus" @blur="userBlur" />
 
 				<view class="clear" @click="clearInput('userName')" v-show="userLoginInfo.userName!=='' && isuserFocus">
@@ -23,7 +23,7 @@
 					密 码
 				</view>
 
-				<u-input :focus="pd" v-model="userLoginInfo.password" type="password" :password-icon="false" class="input" :height="100"
+				<u-input :focus="pd" v-model="userLoginInfo.password" type="password" :password-icon="false" :height="100"
 				 placeholder="" :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
 
 				<view class="clear" @click="clearInput('password')" v-show="userLoginInfo.password!=='' && ispdFocus">
@@ -147,39 +147,47 @@
 				this.isuserFocus = true
 
 				this.un = true
-				this.pd = false
 			},
 			userBlur() {
-				setTimeout(() => {
+				this.un = false
+				// setTimeout(() => {
 					this.isuserFocus = false
-				}, 1)
+				// }, 1)
 			},
 
 			pdFocus() {
 				this.ispdFocus = true
 
 				this.pd = true
-				this.un = false
 			},
 			pdBlur() {
+				this.pd = false
 				// 失去焦点事件先于清除事件触发，因此让其延迟即可先触发 clearInput 事件
-				setTimeout(() => {
+				// setTimeout(() => {
 					this.ispdFocus = false
-				}, 1)
+				// }, 1)
 			},
 
 			// 清除 input 内容
 			clearInput(value) {
 				switch (value) {
 					case 'userName':
-						// 清空后让输入位置继续保持移动后的位置
 						setTimeout(() => {
 							this.userLoginInfo.userName = ''
+							// 清空内容之后保持焦点
+							this.un = false
+							this.$nextTick(()=>{
+								this.un = true
+							})
 						}, 2)
 						break
 					case 'password':
 						setTimeout(() => {
 							this.userLoginInfo.password = ''
+							this.pd = false
+							this.$nextTick(()=>{
+								this.pd = true
+							})
 						}, 2)
 						break
 				}
