@@ -5,7 +5,27 @@
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
+	// 请求超时设置
+	"networkTimeout":{
+		"request":5000
+	},
     "app-plus" : {
+		 "safearea": {  
+		        "background":"#f2f2f2",    // 安全区域外的背景颜色，默认值为"#FFFFFF"  
+		        "bottom":{    
+					// 底部安全区域配置  
+					// 底部安全区域偏移，"none"表示不空出安全区域，"auto"自动计算空出安全区域，默认值为"none"  
+		            "offset":"none|auto"       
+		        },  
+		        "left": {    
+					// 左侧安全区域配置（横屏显示时有效）  
+		            "offset":"none|auto"  
+		        },  
+		        "right": {    
+					// 右侧安全区域配置（横屏显示时有效）  
+		            "offset":"none|auto"  
+		        }  
+		    },
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
         "modules" : {

@@ -12,26 +12,26 @@
 	export default {
 		data() {
 			return {
-				
+
 			};
 		}
 	}
 </script>
 
 <style lang="scss">
-.container {
-				display: flex;
-				flex-wrap: nowrap;
-				align-items: flex-end;
-				border-bottom: 1px solid #e4e4e4;
+	.container {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: flex-end;
+		border-bottom: 1px solid #e4e4e4;
 
-				.clear {
-					margin-bottom: 20rpx;
+		.clear {
+			margin-bottom: 20rpx;
 
-					.img {
-						height: 36rpx;
-						width: 36rpx;
-					}
-				}
+			.img {
+				height: 36rpx;
+				width: 36rpx;
 			}
+		}
+	}
 </style>

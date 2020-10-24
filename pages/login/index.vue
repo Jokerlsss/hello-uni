@@ -10,8 +10,12 @@
 					帐 号
 				</view>
 
-				<u-input v-model="userLoginInfo.userName" type="text" :height="100" placeholder="" :custom-style="customStyle"
+				<u-input :focus="un" v-model="userLoginInfo.userName" type="text" :height="100" placeholder="" :custom-style="customStyle"
 				 :clearable="false" @focus="userFocus" @blur="userBlur" />
+
+				<view class="clear" @click="clearInput('userName')" v-show="userLoginInfo.userName!=='' && isuserFocus">
+					<image :src="clearImg" class="img"></image>
+				</view>
 			</view>
 			<!-- 密码输入框 -->
 			<view class="input-text" :style="ispdFocus?input_boder_style.focus:input_boder_style.blur">
@@ -19,8 +23,12 @@
 					密 码
 				</view>
 
-				<u-input v-model="userLoginInfo.password" type="password" :password-icon="false" :height="100" placeholder=""
-				 :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
+				<u-input :focus="pd" v-model="userLoginInfo.password" type="password" :password-icon="false" :height="100"
+				 placeholder="" :maxlength="pdMaxLength" :custom-style="customStyle" :clearable="false" @focus="pdFocus" @blur="pdBlur" />
+
+				<view class="clear" @click="clearInput('password')" v-show="userLoginInfo.password!=='' && ispdFocus">
+					<image :src="clearImg" class="img"></image>
+				</view>
 			</view>
 
 			<!-- 登录按钮 -->
@@ -46,7 +54,6 @@
 				},
 
 				// 整体容器高度，单位 rpx
-
 				// containerHeight: 1000,
 				containerHeight: {
 					focus: 'height:800rpx;transition:0.2s',
@@ -81,12 +88,12 @@
 
 				// 输入框 label 样式
 				label_style: {
-					focus: 'width:100rpx;display:flex;justify-content:center;color:#FF5242;font-weight:bold;transform:scale(1.1)',
+					focus: 'width:100rpx;display:flex;justify-content:center;color:#6C9EFF;font-weight:bold;transform:scale(1.1)',
 					blur: 'width:100rpx;display:flex;justify-content:center;color:#aaaaaa;transform:scale(1)'
 				},
 
 				input_boder_style: {
-					focus: 'border-bottom: 1px solid #FF5242;',
+					focus: 'border-bottom: 1px solid #6C9EFF;',
 					blur: 'border-bottom: 1px solid #e4e4e4;'
 				},
 
@@ -98,7 +105,7 @@
 						"height": "100rpx",
 						"border-radius": "20rpx",
 						"border": "#e4e4e4",
-						"background-color": "#FF5242",
+						"background-color": "#6C9EFF",
 						"color": "#fff"
 					},
 					disabled: {
@@ -106,7 +113,7 @@
 						"height": "100rpx",
 						"border-radius": "20rpx",
 						"border": "#e4e4e4",
-						"background-color": "#FF5242",
+						"background-color": "#6C9EFF",
 						"color": "#fff",
 						"opacity": "0.5"
 					}
@@ -114,6 +121,9 @@
 
 				// 点击登录按钮后，接口返回数据前，对该操作上锁
 				isLogining: false,
+
+				un: false,
+				pd: false,
 
 				isDisabledBtn: true
 			}
@@ -124,14 +134,44 @@
 				this.isuserFocus = true
 			},
 			userBlur() {
-				this.isuserFocus = false
+				setTimeout(() => {
+					this.isuserFocus = false
+				}, 1)
 			},
 
 			pdFocus() {
 				this.ispdFocus = true
 			},
 			pdBlur() {
-				this.ispdFocus = false
+				// 失去焦点事件先于清除事件触发，因此让其延迟即可先触发 clearInput 事件
+				setTimeout(() => {
+					this.ispdFocus = false
+				}, 1)
+			},
+
+			// 清除 input 内容
+			clearInput(value) {
+				switch (value) {
+					case 'userName':
+						setTimeout(() => {
+							this.userLoginInfo.userName = ''
+							// 清空内容之后保持焦点
+							this.un = false
+							this.$nextTick(() => {
+								this.un = true
+							})
+						}, 2)
+						break
+					case 'password':
+						setTimeout(() => {
+							this.userLoginInfo.password = ''
+							this.pd = false
+							this.$nextTick(() => {
+								this.pd = true
+							})
+						}, 2)
+						break
+				}
 			},
 
 			async login() {
@@ -161,12 +201,18 @@
 								// url 默认 navigateTo，isTab 配置为 switchTab
 								isTab: true
 							})
+						} else {
+							this.$refs.uToast.show({
+								title: '帐号或密码错误',
+								type: 'error'
+							})
 						}
-					}).catch(() => {
+					}).catch((err) => {
+						// let networkTimeout = "request:fail abort statusCode:-1"
 						// 密码错误
 						this.isLogining = false
 						this.$refs.uToast.show({
-							title: '帐号或密码错误',
+							title: "网络连接超时，请重试",
 							type: 'error'
 						})
 					})
@@ -174,7 +220,7 @@
 			}
 		},
 		/**
-		 * 警惕！！！去除状态栏的代码不可加！会导致 input 框焦点获取逻辑混乱，导致键盘弹出错误。
+		 * 警惕！去除状态栏的代码不可加！会导致 input 框焦点获取逻辑混乱，导致键盘弹出错误。
 		 */
 		// onShow() {
 		// 	// 去除状态栏
@@ -196,8 +242,6 @@
 </script>
 
 <style lang="scss">
-	$screen-height:1334rpx;
-
 	.container {
 		display: flex;
 		flex-wrap: wrap;
@@ -250,6 +294,7 @@
 				}
 			}
 		}
+
 
 		.copy-right {
 			// bottom: 100rpx;

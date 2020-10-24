@@ -18,15 +18,9 @@
 	export default {
 		data() {
 			return {
-				loading: true,
 				title: "mine",
 				content: "这是一条较长的内容"
 			}
-		},
-		onLoad() {
-			setTimeout(() => {
-				this.loading = false
-			}, 20000)
 		},
 		methods: {
 

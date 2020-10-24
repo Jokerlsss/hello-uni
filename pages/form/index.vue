@@ -1,16 +1,7 @@
 <template>
 	<view class="container">
-		<!-- <view class="status_bar"></view> -->
-		<!-- <uni-nav-bar :title="title" background-color="#FF5242" color="#fff">
-			<view slot="left">
-				<p @click="leftClick">{{leftText}}</p>
-			</view>
-			<view slot="right">
-				<p @click="rightClick">{{rightText}}</p>
-			</view>
-		</uni-nav-bar> -->
 		<view class="search">
-		<u-search placeholder="搜索..." v-model="searchContent"></u-search>
+			<u-search placeholder="搜索..." v-model="searchContent"></u-search>
 		</view>
 		<u-row>
 			<u-col text-align="center" span="4" v-for="(item, index) of menuList" :key="index">
@@ -25,19 +16,19 @@
 		data() {
 			return {
 				// 搜索框内容
-				searchContent:'',
-				
+				searchContent: '',
+
 				leftText: '',
 				rightText: '',
-				title:'智能管控系统',
-				
-				isChoose:false,
-				
-				background:{
+				title: '智能管控系统',
+
+				isChoose: false,
+
+				background: {
 					backgroundColor: '#FF5242'
 				},
-				backTextStyle:{
-					color:"#FFF"
+				backTextStyle: {
+					color: "#FFF"
 				},
 				menuList: [{
 						imgSrc: "../../static/img/stock-out.png",
@@ -46,83 +37,24 @@
 					},
 					{
 						imgSrc: "../../static/img/stock-out.png",
-						title: "辅材出库",
-						url: "../../pages/sup-material-out/index"
-					},
-					{
-						imgSrc: "../../static/img/get-goods.png",
-						title: "辅材领料",
-						url: "../../pages/sup-material-out/index"
-					},
-					{
-						imgSrc: "../../static/img/form.png",
-						title: "辅材采购合同",
-						url: "../../pages/sup-material-out/index"
-					}, {
-						imgSrc: "../../static/img/get-goods.png",
-						title: "辅材领料",
-						url: "../../pages/sup-material-out/index"
-					},
-					{
-						imgSrc: "../../static/img/form.png",
-						title: "辅材采购合同",
-						url: "../../pages/sup-material-out/index"
-					}, {
-						imgSrc: "../../static/img/get-goods.png",
-						title: "辅材领料",
-						url: "../../pages/sup-material-out/index"
-					},
-					{
-						imgSrc: "../../static/img/form.png",
-						title: "辅材采购合同",
-						url: "../../pages/sup-material-out/index"
-					}, {
-						imgSrc: "../../static/img/get-goods.png",
-						title: "辅材领料",
-						url: "../../pages/sup-material-out/index"
-					},
-					{
-						imgSrc: "../../static/img/form.png",
-						title: "辅材采购合同",
-						url: "../../pages/sup-material-out/index"
-					}, {
-						imgSrc: "../../static/img/get-goods.png",
-						title: "辅材领料",
-						url: "../../pages/sup-material-out/index"
-					},
-					{
-						imgSrc: "../../static/img/form.png",
-						title: "辅材采购合同",
-						url: "../../pages/sup-material-out/index"
-					}, {
-						imgSrc: "../../static/img/get-goods.png",
-						title: "辅材领料",
-						url: "../../pages/sup-material-out/index"
+						title: "签到打卡",
+						url: "../../pages/positioning/index"
 					}
 				]
 			}
 		},
-		onShow(){
-				plus.navigator.setFullscreen(false);
-		},
 		methods: {
-			rightClick() {
-				console.log('右侧')
-			},
-			leftClick() {
-				console.log('左侧')
-			},
 			choose() {
 				if (!this.isChoose) {
 					uni.setNavigationBarTitle({
-					    title: '新的标题'
+						title: '新的标题'
 					});
-					this.isChoose=true
+					this.isChoose = true
 				} else {
 					uni.setNavigationBarTitle({
-					    title: '智能制造管控系统'
+						title: '智能制造管控系统'
 					});
-					this.isChoose=false
+					this.isChoose = false
 				}
 
 			}
@@ -135,18 +67,25 @@
 		display: flex;
 		justify-content: space-around;
 		flex-wrap: wrap;
-		
-		.search{
+
+		.search {
 			width: 90%;
-			margin: 20rpx 0;
+			margin-top: 20rpx;
 		}
-	},
-	.status_bar{
+	}
+
+	,
+	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
 		background-color: $uni-color-primary;
 	}
-	.u-col{
+
+	.u-row {
+		width: 100%;
+	}
+
+	.u-col {
 		// display：flex 源码中没有，因此需要加上，不可去除
 		display: flex;
 		justify-content: center !important;

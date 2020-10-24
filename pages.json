@@ -6,12 +6,32 @@
 		// npm安装方式
 		// "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [
+	"pages": [{
+			"path": "pages/login/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					// adjustPan: 界面会随键盘弹起而增加滚动条,
+					// adjustResize：界面会固定不动
+					"softinputMode": "adjustResize"
+				}
+			}
+		},
 		{
-			"path":"pages/login/index",
-			"style":{
-				"enablePullDownRefresh": "false",
-				"navigationStyle":"custom"
+			"path": "pages/form/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/positioning/index",
+			"style": {}
+		},
+		{
+			"path": "pages/map/index",
+			"style": {
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -20,14 +40,30 @@
 				"enablePullDownRefresh": true
 			}
 		},
-		
 		{
-		    "path" : "pages/form/index",
-		    "style" : {
-				"enablePullDownRefresh": "true"
+			"path": "pages/sup-material-out/index",
+			"style": {
+				"navigationBarTitleText": "辅材出库",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					// adjustPan: 界面会随键盘弹起而增加滚动条,
+					// adjustResize：界面会固定不动
+					// "softinputMode": "adjustPan"
+				}
 			}
 		},
-		
+		{
+			"path": "pages/sup-material-out/detail",
+			"style": {
+				"navigationBarTitleText": "辅材出库明细",
+				"app-plus": {
+					// adjustPan: 界面会随键盘弹起而增加滚动条,
+					// adjustResize：界面会固定不动
+					// "softinputMode": "adjustPan"
+				}
+			}
+		},
+
 		{
 			"path": "pages/mine/index",
 			"style": {
@@ -38,37 +74,25 @@
 					}
 				}
 			}
-		},
-	    {
-            "path" : "pages/sup-material-out/index",
-            "style" : {
-				"navigationBarTitleText": "辅材出库"
-			}
-        }		
-    ],
+		}
+	],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",
 		// // 全局默认标题栏头部
 		"navigationBarTitleText": "智能管控系统",
-		"navigationBarBackgroundColor": "#FF5242",
+		"navigationBarBackgroundColor": "#6C9EFF",
 		"backgroundColor": "#FFFFFF",
 		// 下拉刷新
-		"enablePullDownRefresh": "true",
+		// "enablePullDownRefresh": "true",
 		"navigationBarShadow": "grey",
-		
+
 		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
 		"onReachBottomDistance": 50,
-		"navigationStyle":"default"
-		// ! 警告：app-plus 的 sofinputMode 不要加！！！不然 input 框的焦点和键盘的弹起逻辑会变得捉摸不透！（处于猜测阶段，不一定就是因为该属性）
-		// "app-plus":{
-		// 	// adjustPan: 界面会随键盘弹起而增加滚动条,
-		// 	// adjustResize：界面会固定不动
-		// 	"softinputMode": "adjustResize"
-		// }
+		"navigationStyle": "default"
 	},
 	"tabBar": {
 		"color": "#333333",
-		"selectedColor": "#FF5242",
+		"selectedColor": "#6C9EFF",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		// "blurEffect":"light",
@@ -83,7 +107,7 @@
 			"text": "我的",
 			"iconPath": "static/img/index.png",
 			"selectedIconPath": "static/img/index.png"
-		},{
+		}, {
 			"pagePath": "pages/form/index",
 			"text": "表单",
 			"iconPath": "static/img/index.png",
@@ -93,6 +117,10 @@
 	"usingComponents": {
 		"v-no-more": "./components/v-no-more/v-no-more",
 		"v-form-menu": "./components/v-form-menu/v-form-menu",
-		"v-input": "./components/v-input/v-input"
+		"v-input": "./components/v-input/v-input",
+		"v-button": "./components/v-button/v-button",
+		"position-headerInfo": "./components/position-headerInfo/position-headerInfo",
+		"position-clock": "./components/position-clock/position-clock",
+		"v-step": "./components/v-step/v-step"
 	}
 }
