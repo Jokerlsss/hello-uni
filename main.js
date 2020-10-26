@@ -9,6 +9,8 @@ import * as TEXT from './common/text.js'
 import skeleton from './components/xinyi-skeleton/skeleton.vue'
 // uView-UI
 import uView from 'uview-ui'
+// 全局参数
+import store from './store'
 Vue.use(uView)
 
 // ----- 组件注册 ----- 
@@ -18,6 +20,7 @@ Vue.component("v-skeleton",skeleton)
 Vue.prototype.$request = request
 Vue.prototype.$TEXT = TEXT
 Vue.prototype.$Toast = Toast
+Vue.prototype.$store = store
 
 Vue.config.productionTip = false
 
@@ -25,6 +28,7 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 
 const app = new Vue({
+	store,
 	...App
 })
 app.$mount()
