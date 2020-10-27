@@ -14,8 +14,8 @@ const errorHandle = (res) => {
 	// Toast.failToast()
 }
 
-const BASE_URL = 'http://192.168.103.80:9014'
-// const BASE_URL = 'http://localhost:5000'
+// const BASE_URL = 'http://192.168.103.80:9014'
+const BASE_URL = 'http://localhost:5000'
 
 export const request = (options) => {
 	const key = options.url + '&' + (options.method || 'GET')
@@ -31,13 +31,13 @@ export const request = (options) => {
 			// 请求成功
 			success: (res) => {
 				delete pending[key]
-				if (res.data.isSuccess) {
+				// 10.27 暂时去除 isSuccess 的判断，等待真实接口再进行重新封装
+				// if (res.data.isSuccess) {
 					resolve(res)
-				} else {
-					// Toast.failToast()
-					errorHandle(res)
-					reject(res)
-				}
+				// } else {
+				// 	errorHandle(res)
+				// 	reject(res)
+				// }
 			},
 
 			// 请求失败

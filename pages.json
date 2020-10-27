@@ -95,7 +95,6 @@
 		"backgroundColor": "#FFFFFF",
 		// 下拉刷新
 		// "enablePullDownRefresh": "true",
-		"navigationBarShadow": "grey",
 
 		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
 		"onReachBottomDistance": 50,
@@ -110,34 +109,18 @@
 		"list": [{
 			"pagePath": "pages/index/index",
 			"text": "首页",
-<<<<<<< HEAD
 			"iconPath": "static/img/tabBar-home-grey.png",
 			"selectedIconPath": "static/img/tabBar-home-active.png"
 		}, {
-			"pagePath": "pages/mine/index",
+			"pagePath": "pages/form/index",
 			"text": "单据",
 			"iconPath": "static/img/tabBar-form-grey.png",
 			"selectedIconPath": "static/img/tabBar-form-active.png"
 		}, {
-			"pagePath": "pages/form/index",
+			"pagePath": "pages/mine/index",
 			"text": "我的",
 			"iconPath": "static/img/tabBar-user-grey.png",
 			"selectedIconPath": "static/img/tabBar-user-active.png"
-=======
-			"iconPath": "static/img/index.png",
-			"selectedIconPath": "static/img/index.png"
-
-		}, {
-			"pagePath": "pages/form/index",
-			"text": "单据",
-			"iconPath": "static/img/index.png",
-			"selectedIconPath": "static/img/index.png"
-		}, {
-			"pagePath": "pages/mine/index",
-			"text": "我的",
-			"iconPath": "static/img/index.png",
-			"selectedIconPath": "static/img/index.png"
->>>>>>> 039602609236988fd16cd5907f4b9bb03e2aa3e5
 		}]
 	},
 	"usingComponents": {

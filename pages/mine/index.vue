@@ -71,7 +71,6 @@
 			}
 		},
 		methods: {
-
 		}
 	}
 </script>

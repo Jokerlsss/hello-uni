@@ -9,22 +9,22 @@
 			 :action-style="actionStyleObj"></u-search>
 		</view>
 		<view class="Pending" v-show="detailList.length > 0">
-		<view class="listItems" v-for="(item,index) of detailList" :key="index" >
-			<view class="listTittle">
-				<view class="tittleText">{{item.tittle}}</view>
-				<view class="dateText">{{item.date}}</view>
-			</view>
-			<view class="listMessage">报修单编号:{{item.ID}}</view>
-			<view class="listMessage">设备名称:{{item.equipmentName}}</view>
-			<view class="listMessage">故障描述:{{item.describe}}</view>
-			<view class="listFooter">
-				<view class="footerName">
-					<image src="../../static/img/icon/form-list-user.png"></image>
-					由{{item.user}}提交
+			<view class="listItems" v-for="(item,index) of detailList" :key="index">
+				<view class="listTittle">
+					<view class="tittleText">{{item.tittle}}</view>
+					<view class="dateText">{{item.date}}</view>
 				</view>
-				<view :class="footButtonClass(item.state)">{{item.state}}</view>
+				<view class="listMessage">报修单编号:{{item.ID}}</view>
+				<view class="listMessage">设备名称:{{item.equipmentName}}</view>
+				<view class="listMessage">故障描述:{{item.describe}}</view>
+				<view class="listFooter">
+					<view class="footerName">
+						<image src="../../static/img/icon/form-list-user.png"></image>
+						由{{item.user}}提交
+					</view>
+					<view :class="footButtonClass(item.state)">{{item.state}}</view>
+				</view>
 			</view>
-		</view>
 		</view>
 		<view class="nullData" v-show="detailList.length === 0">
 			<image class="nullDataImg" src="../../static/img/null-data.png"></image>
@@ -50,7 +50,7 @@
 					{
 						name: '我收到的'
 					},
-					
+
 				],
 				current: 0,
 				// 搜索栏value
@@ -70,25 +70,7 @@
 
 				],
 				// 待处理数据
-				pendingList: [{
-						ID: 'YK12883717882',
-						tittle: '乐哥学习时间',
-						date: '2020-10-26',
-						equipmentName: '书籍',
-						describe: '每日学习',
-						user: '乐哥',
-						state: '未发起'
-					},
-					{
-						ID: 'YK43125657622',
-						tittle: '小刘没事测试',
-						date: '2020-10-26',
-						equipmentName: '无设备',
-						describe: '吃饱了撑的',
-						user: '小刘',
-						state: '审批中'
-					}
-				],
+				pendingList: [],
 				// 已处理数据
 				processedList: [{
 					ID: 'YK80398828017',
@@ -111,22 +93,34 @@
 		},
 		mounted() {
 			this.tabsChange(0)
+			this.mockPendingList()
 		},
 		methods: {
+			// 模拟待处理数组
+			mockPendingList() {
+				this.$request({
+					url: '/mockPendingList',
+					method: 'GET'
+				}).then(res => {
+					this.pendingList = res.data.data
+							// 第一次进入时,给 detailList 赋值
+							this.detailList = this.pendingList
+				})
+			},
 			tabsChange(e) {
-				switch(e) {
+				switch (e) {
 					case 0:
-					this.detailList = this.pendingList
-					break
+						this.detailList = this.pendingList
+						break
 					case 1:
-					this.detailList = this.processedList
-					break
+						this.detailList = this.processedList
+						break
 					case 2:
-					this.detailList = this.initiatedList
-					break
+						this.detailList = this.initiatedList
+						break
 					case 3:
-					this.detailList = this.receivedList
-					break
+						this.detailList = this.receivedList
+						break
 				}
 			},
 			footButtonClass(state) {
@@ -266,7 +260,7 @@
 				width: 120rpx;
 				height: 40rpx;
 				border-radius: 20px;
-				background:  rgba(112, 206, 139, 0.1);
+				background: rgba(112, 206, 139, 0.1);
 				color: #70ce8b;
 				font-size: 24rpx;
 				font-family: Arial;
@@ -274,6 +268,7 @@
 			}
 		}
 	}
+
 	.nullData {
 		width: 100%;
 		height: 750rpx;
@@ -282,11 +277,13 @@
 		align-items: center;
 		align-content: center;
 		flex-wrap: wrap;
-		image{
+
+		image {
 			width: 400rpx;
 			height: 262rpx;
 		}
-		.text{
+
+		.text {
 			text-align: center;
 			width: 100%;
 			color: rgba(191, 191, 191, 100);

@@ -11,6 +11,8 @@ import skeleton from './components/xinyi-skeleton/skeleton.vue'
 import uView from 'uview-ui'
 // 全局参数
 import store from './store'
+require('util/mock.js')
+
 Vue.use(uView)
 
 // ----- 组件注册 ----- 
