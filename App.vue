@@ -10,5 +10,8 @@ export default {
 	 * @import 要写在首行
 	 */ -->
 <style lang="scss">
-	@import "uview-ui/index.scss"
+	@import "uview-ui/index.scss";
+	page{
+		// background-color: $uni-bg-color-grey;
+	}
 </style>

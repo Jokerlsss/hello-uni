@@ -91,27 +91,26 @@
 		"navigationStyle": "default"
 	},
 	"tabBar": {
-		"color": "#333333",
+		"color": "#8a8a8a",
 		"selectedColor": "#6C9EFF",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		// "blurEffect":"light",
 		"list": [{
 			"pagePath": "pages/index/index",
-			"text": "审批",
-			"iconPath": "static/img/index.png",
-			"selectedIconPath": "static/img/index.png"
-
+			"text": "首页",
+			"iconPath": "static/img/tabBar-home-grey.png",
+			"selectedIconPath": "static/img/tabBar-home-active.png"
 		}, {
 			"pagePath": "pages/mine/index",
-			"text": "我的",
-			"iconPath": "static/img/index.png",
-			"selectedIconPath": "static/img/index.png"
+			"text": "单据",
+			"iconPath": "static/img/tabBar-form-grey.png",
+			"selectedIconPath": "static/img/tabBar-form-active.png"
 		}, {
 			"pagePath": "pages/form/index",
-			"text": "表单",
-			"iconPath": "static/img/index.png",
-			"selectedIconPath": "static/img/index.png"
+			"text": "我的",
+			"iconPath": "static/img/tabBar-user-grey.png",
+			"selectedIconPath": "static/img/tabBar-user-active.png"
 		}]
 	},
 	"usingComponents": {
@@ -121,6 +120,7 @@
 		"v-button": "./components/v-button/v-button",
 		"position-headerInfo": "./components/position-headerInfo/position-headerInfo",
 		"position-clock": "./components/position-clock/position-clock",
-		"v-step": "./components/v-step/v-step"
+		"v-clock-step": "./components/v-clock-step/v-clock-step",
+		"v-clock-step-vertical": "./components/v-clock-step-vertical/v-clock-step-vertical"
 	}
 }

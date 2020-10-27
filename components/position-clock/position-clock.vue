@@ -10,8 +10,9 @@
 
 			<view class="middle">
 				<!-- 步骤条 -->
-				<v-step v-for="(stepItem,index) in clockStep" :key="index" :isClock="stepItem.isClock" :isClockSuccess="stepItem.isClockSuccess"
-				 :isLine="stepItem.isLine" :title="stepItem.title" :clockTime="stepItem.clockTime" class="u-skeleton-rect"></v-step>
+				<v-clock-step v-for="(stepItem,index) in clockStep" :key="index" :isClock="stepItem.isClock" :isClockSuccess="stepItem.isClockSuccess"
+				 :isLine="stepItem.isLine" :title="stepItem.title" :clockTime="stepItem.clockTime" class="u-skeleton-rect">
+				</v-clock-step>
 			</view>
 
 			<view class="bottom">
