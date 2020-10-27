@@ -175,6 +175,7 @@
 			},
 
 			async login() {
+				let that = this
 				if (this.isDisabledBtn) {
 					// 登录按钮被禁用时
 					this.$Toast.unCompleteToast()
@@ -193,6 +194,11 @@
 						// 密码正确
 						this.isLogining = false
 						if (res.data.isSuccess) {
+							let UserObj = {
+								username: that.userLoginInfo.userName,
+								password: that.userLoginInfo.password
+							}
+							that.$store.commit('set_login',UserObj)
 							this.$refs.uToast.show({
 								title: '登录成功',
 								type: 'success',
@@ -212,12 +218,15 @@
 						// 密码错误
 						this.isLogining = false
 						this.$refs.uToast.show({
-							title: "网络连接超时，请重试",
+							title: "连接超时，请重试",
 							type: 'error'
 						})
 					})
 				}
 			}
+		},
+		onLoad() {
+			// console.log(this.$store.state.isLogin)
 		},
 		/**
 		 * 警惕！去除状态栏的代码不可加！会导致 input 框焦点获取逻辑混乱，导致键盘弹出错误。

@@ -6,7 +6,27 @@
 		// npm安装方式
 		// "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/form/index",
+			"style": {
+				// "enablePullDownRefresh": true
+			}
+		},
+		{
+		    "path" : "pages/init/initIndex",
+		    "style" : {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/login/index",
 			"style": {
 				"enablePullDownRefresh": false,
@@ -18,12 +38,7 @@
 				}
 			}
 		},
-		{
-			"path": "pages/form/index",
-			"style": {
-				"enablePullDownRefresh": true
-			}
-		},
+		
 		{
 			"path": "pages/positioning/index",
 			"style": {}
@@ -34,12 +49,7 @@
 				"navigationStyle": "custom"
 			}
 		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"enablePullDownRefresh": true
-			}
-		},
+		
 		{
 			"path": "pages/sup-material-out/index",
 			"style": {
@@ -75,7 +85,8 @@
 				}
 			}
 		}
-	],
+	    
+    ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",
 		// // 全局默认标题栏头部
@@ -99,6 +110,7 @@
 		"list": [{
 			"pagePath": "pages/index/index",
 			"text": "首页",
+<<<<<<< HEAD
 			"iconPath": "static/img/tabBar-home-grey.png",
 			"selectedIconPath": "static/img/tabBar-home-active.png"
 		}, {
@@ -111,6 +123,21 @@
 			"text": "我的",
 			"iconPath": "static/img/tabBar-user-grey.png",
 			"selectedIconPath": "static/img/tabBar-user-active.png"
+=======
+			"iconPath": "static/img/index.png",
+			"selectedIconPath": "static/img/index.png"
+
+		}, {
+			"pagePath": "pages/form/index",
+			"text": "单据",
+			"iconPath": "static/img/index.png",
+			"selectedIconPath": "static/img/index.png"
+		}, {
+			"pagePath": "pages/mine/index",
+			"text": "我的",
+			"iconPath": "static/img/index.png",
+			"selectedIconPath": "static/img/index.png"
+>>>>>>> 039602609236988fd16cd5907f4b9bb03e2aa3e5
 		}]
 	},
 	"usingComponents": {
