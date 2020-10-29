@@ -8,6 +8,14 @@
 	},
 	"pages": [
 		{
+		    "path" : "pages/push-test/index",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"enablePullDownRefresh": true
@@ -85,7 +93,6 @@
 				}
 			}
 		}
-	    
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",
