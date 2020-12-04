@@ -8,10 +8,22 @@
 	},
 	"pages": [
 		{
-		    "path" : "pages/push-test/index",
-		    "style" :                                                                                    
+			"path": "pages/login/index",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"app-plus": {
+					// adjustPan: 界面会随键盘弹起而增加滚动条,
+					// adjustResize：界面会固定不动
+					"softinputMode": "adjustResize"
+				}
+			}
+		},
+		{
+		    "path" : "pages/table/index",
+		    "style" :
 		    {
-		        "navigationBarTitleText": "",
+		        // "navigationBarTitleText": "",
 		        "enablePullDownRefresh": false
 		    }
 		},
@@ -20,6 +32,14 @@
 			"style": {
 				"enablePullDownRefresh": true
 			}
+		},
+		{
+		    "path" : "pages/push-test/index",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
 		},
 		{
 			"path": "pages/form/index",
@@ -34,19 +54,6 @@
 				"navigationStyle": "custom"
 			}
 		},
-		{
-			"path": "pages/login/index",
-			"style": {
-				"enablePullDownRefresh": false,
-				"navigationStyle": "custom",
-				"app-plus": {
-					// adjustPan: 界面会随键盘弹起而增加滚动条,
-					// adjustResize：界面会固定不动
-					"softinputMode": "adjustResize"
-				}
-			}
-		},
-		
 		{
 			"path": "pages/positioning/index",
 			"style": {}
@@ -92,7 +99,7 @@
 					}
 				}
 			}
-		}
+		}		
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",
@@ -138,6 +145,8 @@
 		"position-headerInfo": "./components/position-headerInfo/position-headerInfo",
 		"position-clock": "./components/position-clock/position-clock",
 		"v-clock-step": "./components/v-clock-step/v-clock-step",
-		"v-clock-step-vertical": "./components/v-clock-step-vertical/v-clock-step-vertical"
+		"v-clock-step-vertical": "./components/v-clock-step-vertical/v-clock-step-vertical",
+		"v-table": "./components/v-table/v-table",
+		"v-table-column": "./components/v-table-column/v-table-column"
 	}
 }

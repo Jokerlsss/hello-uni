@@ -198,7 +198,7 @@
 								username: that.userLoginInfo.userName,
 								password: that.userLoginInfo.password
 							}
-							that.$store.commit('set_login',UserObj)
+							that.$store.commit('set_login', UserObj)
 							this.$refs.uToast.show({
 								title: '登录成功',
 								type: 'success',
@@ -225,8 +225,12 @@
 				}
 			}
 		},
+		onUnload(){
+			// plus.screen.unlockOrientation();
+		},
 		onLoad() {
-			// console.log(this.$store.state.isLogin)
+			//锁定
+			// plus.screen.lockOrientation('landscape-primary'); 
 		},
 		/**
 		 * 警惕！去除状态栏的代码不可加！会导致 input 框焦点获取逻辑混乱，导致键盘弹出错误。

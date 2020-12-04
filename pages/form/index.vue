@@ -8,7 +8,7 @@
 			<u-search placeholder="请输入关键字" v-model="keyword" placeholder-color="#CFCFCF" search-icon-color="#CFCFCF" bg-color="#fff"
 			 :action-style="actionStyleObj"></u-search>
 		</view>
-		<view class="Pending" v-show="detailList.length > 0">
+		<view class="Pending">
 			<view class="listItems" v-for="(item,index) of detailList" :key="index">
 				<view class="listTittle">
 					<view class="tittleText">{{item.tittle}}</view>
@@ -187,15 +187,19 @@
 
 			.tittleText {
 				color: rgba(16, 16, 16, 100);
-				font-size: 28rpx;
-				font-weight: bold;
-				font-family: PingFangSC-regular;
+				font:{
+				size: 28rpx;
+				weight: bold;
+				family: PingFangSC-regular;
+				}
 			}
 
 			.dateText {
 				color: rgba(192, 192, 192, 100);
-				font-size: 24rpx;
-				font-family: PingFangSC-regular;
+				font:{
+					size: 24rpx;
+					family: PingFangSC-regular;
+				}
 			}
 		}
 

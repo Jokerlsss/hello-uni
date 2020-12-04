@@ -11,12 +11,12 @@
 	export default {
 		created() {
 				// 添加监听从系统消息中心点击某条消息启动应用事件
-				plus.push.addEventListener("click", function(msg) {
-					// 分析msg.payload处理业务逻辑
-					console.log(JSON.stringify(msg))
-					console.log("You clicked: " + msg.payload);
-					console.log("You clicked: " + msg.content);
-				}, false);
+				// plus.push.addEventListener("click", function(msg) {
+				// 	// 分析msg.payload处理业务逻辑
+				// 	console.log(JSON.stringify(msg))
+				// 	console.log("You clicked: " + msg.payload);
+				// 	console.log("You clicked: " + msg.content);
+				// }, false);
 		},
 		data() {
 			return {

@@ -3,61 +3,61 @@
 		<!-- 渐变色区域背景 -->
 		<view class="Gradients"></view>
 		<view class="container">
-		<!-- 我的信息区域 -->
-		<view class="myMessageTittle">
-			<view class="name">
-				<text>张二</text>
-				<view class="company">高新区远控科技开发有限公司</view>
+			<!-- 我的信息区域 -->
+			<view class="myMessageTittle">
+				<view class="name">
+					<text :class="{textClass}">张二</text>
+					<view class="company">高新区远控科技开发有限公司</view>
+				</view>
+				<view class="headPortrait">张二</view>
 			</view>
-			<view class="headPortrait">张二</view>
-		</view>
-		<view class="summary">
-			<view class="summaryTittle">
-				10月汇总
+			<view class="summary">
+				<view class="summaryTittle">
+					10月汇总
+				</view>
+				<!-- 汇总区域 -->
+				<view class="summaryFooter">
+					<view class="items">
+						<view class="value">8</view>
+						<view class="itemsTittle">请假(小时)</view>
+					</view>
+					<view class="items">
+						<view class="value">0</view>
+						<view class="itemsTittle">迟到(小时)</view>
+					</view>
+					<view class="items">
+						<view class="value">0</view>
+						<view class="itemsTittle">早退(小时)</view>
+					</view>
+				</view>
 			</view>
-			<!-- 汇总区域 -->
-			<view class="summaryFooter">
+			<!-- 功能模块 -->
+			<view class="operationFunction">
 				<view class="items">
-					<view class="value">8</view>
-					<view class="itemsTittle">请假(小时)</view>
+					<image src="../../static/img/icon/mine-msg.png"></image>
+					<text>我的信息</text>
 				</view>
 				<view class="items">
-					<view class="value">0</view>
-					<view class="itemsTittle">迟到(小时)</view>
+					<image src="../../static/img/icon/mine-rules.png"></image>
+					<text>考勤规则</text>
 				</view>
 				<view class="items">
-					<view class="value">0</view>
-					<view class="itemsTittle">早退(小时)</view>
+					<image src="../../static/img/icon/mine-other.png"></image>
+					<text>设置</text>
+				</view>
+				<view class="items">
+					<image src="../../static/img/icon/mine-about-company.png"></image>
+					<text>关于公司</text>
+				</view>
+				<view class="itemsNoBorder">
+					<image src="../../static/img/icon/mine-about-soft.png"></image>
+					<text>更新日志</text>
 				</view>
 			</view>
-		</view>
-		<!-- 功能模块 -->
-		<view class="operationFunction">
-			<view class="items">
-				<image src="../../static/img/icon/mine-msg.png"></image>
-				<text>我的信息</text>
+			<!-- 退出登录 -->
+			<view class="lgout" @click="test">
+				<text>退出登录</text>
 			</view>
-			<view class="items">
-				<image src="../../static/img/icon/mine-rules.png"></image>
-				<text>考勤规则</text>
-			</view>
-			<view class="items">
-				<image src="../../static/img/icon/mine-other.png"></image>
-				<text>设置</text>
-			</view>
-			<view class="items">
-				<image src="../../static/img/icon/mine-about-company.png"></image>
-				<text>关于公司</text>
-			</view>
-			<view class="itemsNoBorder">
-				<image src="../../static/img/icon/mine-about-soft.png"></image>
-				<text>更新日志</text>
-			</view>
-		</view>
-		<!-- 退出登录 -->
-		<view class="lgout">
-			<text>退出登录</text>
-		</view>
 		</view>
 	</view>
 </template>
@@ -67,10 +67,23 @@
 		data() {
 			return {
 				title: "mine",
-				content: "这是一条较长的内容"
+				textClass:'textClass',
 			}
 		},
+		onShow() {
+			// #ifdef APP-PLUS
+			setTimeout(() => {
+				void plus.screen.unlockOrientation();
+				void plus.screen.lockOrientation('portrait-primary');
+			}, 200)
+			// #endif
+		},
 		methods: {
+			test() {
+				uni.navigateTo({
+					url: '../table/index'
+				});
+			}
 		}
 	}
 </script>
@@ -91,7 +104,8 @@
 		background: linear-gradient(to bottom, #6C9EFF, #F2F3F5);
 		z-index: 1;
 	}
-	.container{
+
+	.container {
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -99,6 +113,7 @@
 		flex-wrap: wrap;
 		justify-content: center;
 	}
+
 	.myMessageTittle {
 		margin-top: 30rpx;
 		width: 690rpx;
@@ -245,7 +260,7 @@
 
 	.lgout {
 		width: 690rpx;
-		height: 80rpx;
+		height: 100rpx;
 		margin-top: 30rpx;
 		border-radius: 20rpx;
 		background-color: rgba(255, 255, 255, 100);
@@ -254,10 +269,15 @@
 		justify-content: center;
 
 		text {
+			font-size: 36rpx;
 			color: #FF5353;
 		}
 	}
-	.lgout:active{
+
+	.lgout:active {
 		background: #F8F8F9;
+	}
+	.textClass{
+		color: #007AFF;
 	}
 </style>
