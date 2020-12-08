@@ -8,6 +8,17 @@
 	},
 	"pages": [
 		{
+			"path": "pages/mine/index",
+			"style": {
+				"h5": {
+					// h5 中的下拉刷新样式
+					"pullToRefresh": {
+						"color": "red"
+					}
+				}
+			}
+		},
+		{
 			"path": "pages/login/index",
 			"style": {
 				"enablePullDownRefresh": false,
@@ -87,19 +98,7 @@
 					// "softinputMode": "adjustPan"
 				}
 			}
-		},
-
-		{
-			"path": "pages/mine/index",
-			"style": {
-				"h5": {
-					// h5 中的下拉刷新样式
-					"pullToRefresh": {
-						"color": "red"
-					}
-				}
-			}
-		}		
+		}			
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",

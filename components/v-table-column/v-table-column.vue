@@ -1,7 +1,6 @@
 <template>
 	<view class="container">
-		<!-- // todo 若超出宽度，需要换行显示 -->
-		<view class="row" :style="{'min-height':headHeight+'rpx','justify-content':textAlign}">
+		<view class="row" :style="{'min-height':headHeight+'rpx','justify-content':textAlign,...customStyle}">
 			{{title}}
 		</view>
 	</view>
@@ -26,9 +25,15 @@
 				type: Number,
 				default: 80
 			},
+			// 文本位置
 			align: {
 				type: String,
 				default: 'center'
+			},
+			// 自定义样式
+			customStyle:{
+				type:Object,
+				default:{}
 			}
 		},
 		computed: {
@@ -56,7 +61,7 @@
 <style lang="scss">
 	.container {
 		width: 100%;
-		display: flex;
+		// display: flex;
 
 		.row {
 			display: flex;
