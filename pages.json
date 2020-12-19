@@ -8,6 +8,17 @@
 	},
 	"pages": [
 		{
+			"path": "pages/navigation/index",
+			"style": {
+				"h5": {
+					// h5 中的下拉刷新样式
+					"pullToRefresh": {
+						"color": "red"
+					}
+				}
+			}
+		},
+		{
 			"path": "pages/mine/index",
 			"style": {
 				"h5": {
@@ -99,43 +110,53 @@
 				}
 			}
 		}			
+        ,{
+            "path" : "pages/navigation/index",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "white",
 		// // 全局默认标题栏头部
-		"navigationBarTitleText": "智能管控系统",
-		"navigationBarBackgroundColor": "#6C9EFF",
+		// "navigationBarTitleText": "智能管控系统",
+		// "navigationBarBackgroundColor": "#6C9EFF",
 		"backgroundColor": "#FFFFFF",
 		// 下拉刷新
 		// "enablePullDownRefresh": "true",
 
 		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
 		"onReachBottomDistance": 50,
-		"navigationStyle": "default"
+		// navigationStyle:custom & default
+		"navigationStyle": "custom"
 	},
-	"tabBar": {
-		"color": "#8a8a8a",
-		"selectedColor": "#6C9EFF",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		// "blurEffect":"light",
-		"list": [{
-			"pagePath": "pages/index/index",
-			"text": "首页",
-			"iconPath": "static/img/tabBar-home-grey.png",
-			"selectedIconPath": "static/img/tabBar-home-active.png"
-		}, {
-			"pagePath": "pages/form/index",
-			"text": "单据",
-			"iconPath": "static/img/tabBar-form-grey.png",
-			"selectedIconPath": "static/img/tabBar-form-active.png"
-		}, {
-			"pagePath": "pages/mine/index",
-			"text": "我的",
-			"iconPath": "static/img/tabBar-user-grey.png",
-			"selectedIconPath": "static/img/tabBar-user-active.png"
-		}]
-	},
+	// "tabBar": {
+	// 	"color": "#8a8a8a",
+	// 	"selectedColor": "#6C9EFF",
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#ffffff",
+	// 	// "blurEffect":"light",
+	// 	"list": [{
+	// 		"pagePath": "pages/index/index",
+	// 		"text": "首页",
+	// 		"iconPath": "static/img/tabBar-home-grey.png",
+	// 		"selectedIconPath": "static/img/tabBar-home-active.png"
+	// 	}, {
+	// 		"pagePath": "pages/form/index",
+	// 		"text": "单据",
+	// 		"iconPath": "static/img/tabBar-form-grey.png",
+	// 		"selectedIconPath": "static/img/tabBar-form-active.png"
+	// 	}, {
+	// 		"pagePath": "pages/mine/index",
+	// 		"text": "我的",
+	// 		"iconPath": "static/img/tabBar-user-grey.png",
+	// 		"selectedIconPath": "static/img/tabBar-user-active.png"
+	// 	}]
+	// },
 	"usingComponents": {
 		"v-no-more": "./components/v-no-more/v-no-more",
 		"v-form-menu": "./components/v-form-menu/v-form-menu",
@@ -146,6 +167,7 @@
 		"v-clock-step": "./components/v-clock-step/v-clock-step",
 		"v-clock-step-vertical": "./components/v-clock-step-vertical/v-clock-step-vertical",
 		"v-table": "./components/v-table/v-table",
-		"v-table-column": "./components/v-table-column/v-table-column"
+		"v-table-column": "./components/v-table-column/v-table-column",
+		"v-main-operate-item": "./components/v-main-operate-item/v-main-operate-item"
 	}
 }

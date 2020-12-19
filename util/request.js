@@ -14,7 +14,7 @@ const errorHandle = (res) => {
 	// Toast.failToast()
 }
 
-const BASE_URL = 'http://192.168.103.70:11000'
+const BASE_URL = 'http://192.168.103.50:21000'
 // const BASE_URL = 'http://localhost:5000'
 
 export const request = (options) => {
