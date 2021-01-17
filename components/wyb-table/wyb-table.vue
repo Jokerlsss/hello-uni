@@ -22,6 +22,7 @@
 			borderTop: '1px solid' + borderColor,
 			borderLeft: showLeftAndRightBorder ? '1px solid' + borderColor : 'none',
 			borderRight: showLeftAndRightBorder ? '1px solid' + borderColor : 'none'}">
+			<!-- 表头 -->
 			<view class="wyb-table-header" :style="{borderBottom: '1px solid' + borderColor}">
 				<view class="wyb-table-header-item" v-if="enableCheck" :style="{
 					 minWidth: checkColWidth + 'rpx',
@@ -39,25 +40,18 @@
 					 color: headerFtColor,
 					 backgroundColor: headerBgColor,
 					 position: 'sticky'}">
-						<view 
-						 class="wyb-table-checkbox"
-						 v-if="enableCheck === 'multiple'"
-						 @tap.stop="onCheckAllTap"
-						 :style="{
+					<view class="wyb-table-checkbox" v-if="enableCheck === 'multiple'" @tap.stop="onCheckAllTap" :style="{
 							width: checkColWidth * 0.5 + 'rpx',
 							height: checkColWidth * 0.5 + 'rpx',
 							backgroundColor: checkerBoxBgColor,
 							border: '1px solid ' + checkerBorderColor}">
-							<text 
-							 class="iconfont icon-check"
-							 v-show="checkAll"
-							 :style="{
+						<text class="iconfont icon-check" v-show="checkAll" :style="{
 								color: checkerColor,
 								backgroundColor: checkerBgColor,
 								paddingTop: (fontSize[1] || fontSize[0]) * 0.15 + 'rpx',
 								fontSize: (fontSize[1] || fontSize[0]) + 'rpx'}" />
-						</view>
-					 </view>
+					</view>
+				</view>
 				<view ref="iosBug" class="wyb-table-header-item" v-for="(item, index) in headers" :key="item.key" @tap="onHeaderItemTap(index)"
 				 :style="{
 					 minWidth: (item.width || defaultColWidth) + 'rpx',
@@ -74,28 +68,28 @@
 					 zIndex: index === 0 ? 20 : 0,
 					 left: index === 0 && firstLineFixed ? (enableCheck ? checkColWidth + 'rpx' : 0) : 'auto', 
 					 position: index === 0 ? 'sticky' : 'static'}">
-					 <text :style="{marginLeft: autoSortShow(index) && textAlign !== 'left' ? fontSize[0] * 0.65 + 'rpx' : 0}">
-						 {{item.label || emptyString}}
-					 </text>
-					 <view class="wyb-table-header-icon" v-if="autoSortShow(index)">
-					 	<text class="iconfont icon-arrow-up" :style="{
+					<text :style="{marginLeft: autoSortShow(index) && textAlign !== 'left' ? fontSize[0] * 0.65 + 'rpx' : 0}">
+						{{item.label || emptyString}}
+					</text>
+					<view class="wyb-table-header-icon" v-if="autoSortShow(index)">
+						<text class="iconfont icon-arrow-up" :style="{
 							color: sortWays[sortWay] === 'asc' && sortActiveKey === item.key ? 
 								headerFtColor : RGBChange(headerFtColor, 0.7, 'light'),
 							fontWeight: 'normal',
 							marginBottom: '-12px',
 							transform: 'scale(0.4)'}" />
-					 	<text class="iconfont icon-arrow-down" :style="{
+						<text class="iconfont icon-arrow-down" :style="{
 							color: sortWays[sortWay] === 'inv' && sortActiveKey === item.key ? 
 								headerFtColor : RGBChange(headerFtColor, 0.7, 'light'),
 							fontWeight: 'normal',
 							transform: 'scale(0.4)'}" />
-					 </view>
+					</view>
 				</view>
 			</view>
 			<view class="wyb-table-content">
 				<view class="wyb-table-content-line" v-for="(content, cIndex) in contentsSort" :key="contentLineKey(content, cIndex)"
 				 :style="{borderTop: cIndex === 0 ? 'none' : '1px solid' + borderColor}">
-				 <!-- Jokerls: 开启checkbox功能 -->
+					<!-- Jokerls: 开启checkbox功能 -->
 					<view class="wyb-table-content-item" v-if="enableCheck" :style="{
 						 minWidth: checkColWidth + 'rpx',
 						 maxWidth: checkColWidth + 'rpx',
@@ -110,30 +104,21 @@
 						 backgroundColor: checkerCellBgColor,
 						 left: 0,
 						 position: 'sticky'}">
-							<view 
-							 class="wyb-table-checkbox" 
-							 @tap.stop="onCheckItemTap(cIndex)"
-							 :style="{
+						<view class="wyb-table-checkbox" @tap.stop="onCheckItemTap(cIndex)" :style="{
 								width: checkColWidth * 0.5 + 'rpx',
 								height: checkColWidth * 0.5 + 'rpx',
 								backgroundColor: checkerBoxBgColor,
 								border: '1px solid ' + checkerBorderColor}">
-								<text 
-								 class="iconfont icon-check" 
-								 v-show="contentsSort[cIndex].checked"
-								 :style="{
+							<text class="iconfont icon-check" v-show="contentsSort[cIndex].checked" :style="{
 									color: checkerColor,
 									backgroundColor: checkerBgColor,
 									paddingTop: (fontSize[1] || fontSize[0]) * 0.15 + 'rpx',
 									fontSize: (fontSize[1] || fontSize[0]) + 'rpx'}" />
-							</view>
-						 </view>
-					<view
-					 class="wyb-table-content-item" 
-					 v-for="(header, hIndex) in headers"
-					 @tap.stop="onContentItemTap(cIndex, hIndex)"
-					 :key="contentItemKey(header, hIndex)" 
-					 :style="{
+						</view>
+					</view>
+					<!-- Jokerls: 正常content-item -->
+					<view class="wyb-table-content-item" v-for="(header, hIndex) in headers" @tap.stop="onContentItemTap(cIndex, hIndex)"
+					 :key="contentItemKey(header, hIndex)" :style="{
 						 minWidth: (header.width || defaultColWidth) + 'rpx',
 						 maxWidth: (header.width || defaultColWidth) + 'rpx',
 						 textAlign: textAlign,
@@ -150,6 +135,7 @@
 						 left: enableCheck ? checkColWidth + 'rpx' : 0,
 						 position: hIndex === 0 && firstLineFixed ? 'sticky' : 'static'}">{{autoContentItem(cIndex, hIndex)}}</view>
 				</view>
+				<!-- Jokerls: 是否使用合计功能 -->
 				<view v-if="computedCol.length !== 0" class="wyb-table-content-line" :style="{
 					position: bottomComputedFixed ? 'sticky' : 'static',
 					bottom: 0,
@@ -170,8 +156,7 @@
 						 backgroundColor: checkerCellBgColor,
 						 left: 0,
 						 position: 'sticky'}"></view>
-					<view class="wyb-table-content-item" v-for="(header, index) in headers" :key="index"
-					:style="{
+					<view class="wyb-table-content-item" v-for="(header, index) in headers" :key="index" :style="{
 						 minWidth: (header.width || defaultColWidth) + 'rpx',
 						 maxWidth: (header.width || defaultColWidth) + 'rpx',
 						 textAlign: textAlign,
@@ -196,7 +181,9 @@
 
 <script>
 	import Pinyin from './js/characterToPinyin.js'
-	import {isEqual} from './js/objEqual.js'
+	import {
+		isEqual
+	} from './js/objEqual.js'
 	export default {
 		data() {
 			return {
@@ -237,7 +224,7 @@
 			contentLineKey() {
 				return function(content, cIndex) {
 					return this.randomString(32, this.chars)
-				} 
+				}
 			},
 			contentItemKey() {
 				return function(header, hIndex) {
@@ -268,17 +255,19 @@
 								}
 							})
 						}
-						
+
 					} else {
 						result = this.emptyString
 					}
 					return result
 				}
 			},
+			// Jokerls: 合计
 			autoBottomComputedItem() {
 				return function(index) {
 					let bottomComputed = {}
 					let needComputed = []
+					// Jokerls: 遍历需要合计的列
 					this.computedCol.forEach(key => {
 						let computedColData = []
 						this.contentsSort.forEach(content => {
@@ -294,7 +283,7 @@
 						bottomComputed[this.computedCol[index]] = total
 					})
 					let header = this.headers[index]
-					let result = this.computedCol.includes(header.key) ? 
+					let result = this.computedCol.includes(header.key) ?
 						bottomComputed[header.key] : (index === 0 ? '总计' : this.emptyString)
 					if (this.formatCol.length !== 0) {
 						this.formatCol.forEach(item => {
@@ -349,7 +338,7 @@
 							let type = this.valueFormat[keys.indexOf(key)].type
 							let style = this.valueFormat[keys.indexOf(key)].style
 							let range = this.valueFormat[keys.indexOf(key)].range || ''
-							switch(type) {
+							switch (type) {
 								case 'bigger':
 									if (parseFloat(content[key]) > range) {
 										if (style.bgColor) result = style.bgColor
@@ -369,7 +358,7 @@
 									}
 									break
 								case 'range':
-									if (parseFloat(content[key]) > range[0] && parseFloat(content[key]) < range[1]){
+									if (parseFloat(content[key]) > range[0] && parseFloat(content[key]) < range[1]) {
 										if (style.bgColor) result = style.bgColor
 									}
 									break
@@ -426,7 +415,7 @@
 							let type = this.valueFormat[keys.indexOf(key)].type
 							let style = this.valueFormat[keys.indexOf(key)].style
 							let range = this.valueFormat[keys.indexOf(key)].range || ''
-							switch(type) {
+							switch (type) {
 								case 'bigger':
 									if (parseFloat(content[key]) > range) {
 										if (style.color) result = style.color
@@ -446,7 +435,7 @@
 									}
 									break
 								case 'range':
-									if (parseFloat(content[key]) > range[0] && parseFloat(content[key]) < range[1]){
+									if (parseFloat(content[key]) > range[0] && parseFloat(content[key]) < range[1]) {
 										if (style.color) result = style.color
 									}
 									break
@@ -503,7 +492,7 @@
 		props: {
 			headers: {
 				type: Array,
-				default() {
+				default () {
 					return [{
 						key: 'name',
 						label: '姓名'
@@ -512,7 +501,7 @@
 			},
 			contents: {
 				type: Array,
-				default() {
+				default () {
 					return [{
 						name: '张三'
 					}, {
@@ -534,7 +523,7 @@
 			},
 			fontSize: {
 				type: Array,
-				default() {
+				default () {
 					return [30]
 				}
 			},
@@ -548,7 +537,7 @@
 			},
 			minHeight: {
 				type: Array,
-				default() {
+				default () {
 					return [70]
 				}
 			},
@@ -586,7 +575,7 @@
 			},
 			padding: {
 				type: Array,
-				default() {
+				default () {
 					return [5, 10]
 				}
 			},
@@ -596,13 +585,13 @@
 			},
 			urlCol: {
 				type: Array,
-				default() {
+				default () {
 					return []
 				}
 			},
 			computedCol: {
 				type: Array,
-				default() {
+				default () {
 					return []
 				}
 			},
@@ -612,13 +601,13 @@
 			},
 			valueFormat: {
 				type: Array,
-				default() {
+				default () {
 					return []
 				}
 			},
 			formatCol: {
 				type: Array,
-				default() {
+				default () {
 					return []
 				}
 			},
@@ -632,13 +621,13 @@
 			},
 			sortCol: {
 				type: Array,
-				default() {
+				default () {
 					return []
 				}
 			},
 			sortWays: {
 				type: Array,
-				default() {
+				default () {
 					return ['none', 'asc', 'inv']
 				}
 			},
@@ -721,7 +710,7 @@
 					// 升序
 					if (isNumber) {
 						arr.sort((a, b) => {
-						    return (parseFloat(a[key].toString().replace(/[^0-9]/ig, "")) || 0) - 
+							return (parseFloat(a[key].toString().replace(/[^0-9]/ig, "")) || 0) -
 								(parseFloat(b[key].toString().replace(/[^0-9]/ig, "")) || 0)
 						})
 					} else {
@@ -735,12 +724,12 @@
 							return A - B
 						})
 					}
-					
+
 				} else if (type === 'inv') {
 					// 倒序
 					if (isNumber) {
 						arr.sort((a, b) => {
-						    return (parseFloat(b[key].toString().replace(/[^0-9]/ig, "")) || 0) - 
+							return (parseFloat(b[key].toString().replace(/[^0-9]/ig, "")) || 0) -
 								(parseFloat(a[key].toString().replace(/[^0-9]/ig, "")) || 0)
 						})
 					} else {
@@ -753,7 +742,7 @@
 							}).charAt(0).charCodeAt()
 							return B - A
 						})
-					} 
+					}
 				} else {
 					this.contentsSort = this.oContentsSort.slice()
 				}
@@ -812,18 +801,18 @@
 				let content = this.contentsSort[cIndex]
 				let header = this.headers[hIndex]
 				let keys = []
-				
+
 				if (this.urlCol.length !== 0) {
 					for (let i in this.urlCol) {
 						let item = this.urlCol[i]
 						keys.push(item.key)
 					}
 				}
-				
+
 				if (content[header.key]) {
 					if (keys.includes(header.key)) {
 						// 该单元格为链接
-						switch(this.urlCol[keys.indexOf(header.key)].type) {
+						switch (this.urlCol[keys.indexOf(header.key)].type) {
 							case 'route':
 								let url = content[header.key][1]
 								if (content[header.key][2]) {
@@ -832,7 +821,9 @@
 										url += `&${key}=${content[header['key']][2][key]}`
 									})
 								}
-								uni.navigateTo({url})
+								uni.navigateTo({
+									url
+								})
 								break
 							case 'http':
 								this.openURL(content[header.key][1])
@@ -849,7 +840,7 @@
 						}
 						this.$emit('onCellClick', event)
 					}
-					
+
 				} else {
 					event = {
 						content: '',
@@ -865,7 +856,7 @@
 					}
 					this.$emit('onCellClick', event)
 				}
-				
+
 			},
 			onCheckAllTap() {
 				if (this.enableCheck === 'multiple') {
@@ -886,7 +877,7 @@
 								lineData: content
 							})
 						})
-						
+
 					} else {
 						this.checkAll = false
 						this.event.data = []
@@ -979,7 +970,7 @@
 					r = parseInt(color16List[0], 16)
 					g = parseInt(color16List[1], 16)
 					b = parseInt(color16List[2], 16)
-			
+
 				} else {
 					hasAlpha = color.indexOf('a') !== -1
 					let root = color.slice()
@@ -999,13 +990,13 @@
 						b = parseFloat(root)
 					}
 				}
-			
+
 				let rgbc = [r, g, b]
 				// 减淡或加深
 				for (var i = 0; i < 3; i++)
 					type === 'light' ? rgbc[i] = Math.floor((255 - rgbc[i]) * level + rgbc[i]) : rgbc[i] = Math.floor(rgbc[i] * (1 -
 						level))
-			
+
 				if (hasAlpha) {
 					return `rgba(${rgbc[0]}, ${rgbc[1]}, ${rgbc[2]}, ${alpha})`
 				} else {
@@ -1024,9 +1015,9 @@
 				return [r, g, b]
 			},
 			randomString(length, chars) {
-			    var result = ''
-			    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)]
-			    return result
+				var result = ''
+				for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)]
+				return result
 			}
 		}
 	}
@@ -1035,17 +1026,18 @@
 <style>
 	@import './css/iconfont.css';
 	@import './css/loader.css';
+
 	.ios-header-bug {
 		height: 0;
 		width: 1px;
 		opacity: 0;
 	}
-	
+
 	.wyb-table-scroll-view {
 		overflow: scroll;
 		-webkit-overflow-scrolling: touch;
 	}
-	
+
 	.wyb-table-scroll-view::-webkit-scrollbar {
 		display: none;
 		/* #ifdef MP-WEIXIN */
@@ -1053,14 +1045,14 @@
 		height: 0;
 		/* #endif */
 	}
-	
+
 	.wyb-table-loading-box {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		z-index: 500;
 	}
-	
+
 	.wyb-table-header {
 		position: sticky;
 		top: 0;
@@ -1069,7 +1061,7 @@
 		width: max-content;
 		z-index: 25;
 	}
-	
+
 	.wyb-table-header-item {
 		flex: 1;
 		display: flex;
@@ -1077,26 +1069,26 @@
 		box-sizing: border-box;
 		position: relative;
 	}
-	
+
 	.wyb-table-header-icon {
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 	.wyb-table-content-line {
 		display: grid;
 		grid-auto-flow: column;
 		width: max-content;
 		position: relative;
 	}
-	
+
 	.wyb-table-content-item {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		box-sizing: border-box;
 	}
-	
+
 	.wyb-table-checkbox {
 		border-radius: 3px;
 		display: flex;
@@ -1104,7 +1096,7 @@
 		justify-content: center;
 		position: relative;
 	}
-	
+
 	.icon-check {
 		width: 100%;
 		height: 100%;

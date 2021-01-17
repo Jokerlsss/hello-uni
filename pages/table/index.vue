@@ -1,7 +1,7 @@
 <template>
 	<!--  :class="{notchClass:hasNotchInScreen}" -->
 	<view class="container">
-		<v-table :tableData="tableData" :headers="headers" class="v-table">
+		<v-table :tableData="tableData"  width="1000"  height="300rpx" :headers="headers" :firstLineFixed="true" class="v-table">
 		<!-- 	<v-table-column field="date" title="日期" :customStyle="columnStyle"></v-table-column>
 			<v-table-column field="planNum" title="计划数" :customStyle="columnStyle"></v-table-column>
 			<v-table-column field="OKNum" title="合格数" :customStyle="columnStyle"></v-table-column>
@@ -32,6 +32,42 @@
 				                key: 'todoNum'
 				            }],
 				tableData: [{
+						BadNum: 'BadNum',
+						planNum: 'planNum',
+						date: 'date',
+						todoNum: 'todoNum',
+						OKNum: 'OKNum'
+					},{
+						BadNum: 'BadNum',
+						planNum: 'planNum',
+						date: 'date',
+						todoNum: 'todoNum',
+						OKNum: 'OKNum'
+					},{
+						BadNum: 'BadNum',
+						planNum: 'planNum',
+						date: 'date',
+						todoNum: 'todoNum',
+						OKNum: 'OKNum'
+					},{
+						BadNum: 'BadNum',
+						planNum: 'planNum',
+						date: 'date',
+						todoNum: 'todoNum',
+						OKNum: 'OKNum'
+					},{
+						BadNum: 'BadNum',
+						planNum: 'planNum',
+						date: 'date',
+						todoNum: 'todoNum',
+						OKNum: 'OKNum'
+					},{
+						BadNum: 'BadNum',
+						planNum: 'planNum',
+						date: 'date',
+						todoNum: 'todoNum',
+						OKNum: 'OKNum'
+					},{
 						BadNum: 'BadNum',
 						planNum: 'planNum',
 						date: 'date',
@@ -75,7 +111,7 @@
 	.container {
 		margin: 0 auto;
 		// margin-top: 10rpx;
-		width: 90%;
+		width: 100%;
 	}
 
 	// 刘海屏时的样式
