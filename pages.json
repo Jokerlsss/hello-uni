@@ -46,7 +46,8 @@
 		    "style" :
 		    {
 		        // "navigationBarTitleText": "",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": false,
+				"navigationStyle": "default"
 		    }
 		},
 		{
@@ -130,9 +131,9 @@
 		// "enablePullDownRefresh": "true",
 
 		// onReachBottomDistance 不能设置为 0，否则会导致 oppo 机型下触底函数不触发
-		"onReachBottomDistance": 50,
+		"onReachBottomDistance": 50
 		// navigationStyle:custom & default
-		"navigationStyle": "custom"
+		// "navigationStyle": "custom"
 	},
 	// "tabBar": {
 	// 	"color": "#8a8a8a",
