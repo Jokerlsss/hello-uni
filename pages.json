@@ -118,6 +118,27 @@
                 "enablePullDownRefresh": false
             }
             
+        },
+        {
+            "path" : "pages/perform/index",
+            "style" :                                                                                    
+            {
+				"navigationStyle": "default",
+                "navigationBarTitleText": "公司公告",
+                "navigationBarBackgroundColor": "#6C9EFF",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/perform-detail/index",
+            "style" :                                                                                    
+            {
+                "navigationStyle": "default",
+                "navigationBarTitleText": "公司公告",
+                "navigationBarBackgroundColor": "#6C9EFF",
+                "enablePullDownRefresh": false
+            }
+            
         }
     ],
 	"globalStyle": {
@@ -168,6 +189,7 @@
 		"v-clock-step-vertical": "./components/v-clock-step-vertical/v-clock-step-vertical",
 		"v-table": "./components/v-table/v-table",
 		"v-table-column": "./components/v-table-column/v-table-column",
-		"v-main-operate-item": "./components/v-main-operate-item/v-main-operate-item"
+		"v-main-operate-item": "./components/v-main-operate-item/v-main-operate-item",
+		"v-perform-item": "./components/v-perform-item/v-perform-item"
 	}
 }

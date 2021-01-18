@@ -115,8 +115,6 @@
 			}
 			
 			.operate-item:active{
-				box-shadow: 0px 0px 0px 0px;
-				transform: 0.2s;
-				opacity: 0.5;
+				@include btn-active-5()
 			}
 </style>

@@ -103,6 +103,9 @@
 						// 单据查看
 						break
 					case 'perform':
+						uni.navigateTo({
+							url: '../perform/index'
+						})
 						// 公司公告
 						break
 					case 'edit':
@@ -262,12 +265,21 @@
 				}
 			}
 
+			&:active {
+				@include btn-active-7()
+			}
+
 			@include long-btn($uni-color-primary, #fff, 0.1)
 		}
 
 		// 退出登录按钮
 		.logout-btn {
 			margin-bottom: 30rpx;
+
+			&:active {
+				@include btn-active-7()
+			}
+
 			@include flex-center() @include long-btn(#fff, $uni-color-error, 0.05)
 		}
 
