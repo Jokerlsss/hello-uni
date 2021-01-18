@@ -41,7 +41,7 @@
 				 :number="itemList.approve.number" :isWarning="itemList.approve.isWarning"></v-main-operate-item>
 
 				<!-- 单据查看 -->
-				<v-main-operate-item :imgSrc="itemList.see.imgSrc" :text="itemList.see.text" @toPage="toPage('see')" :number="itemList.see.number"
+				<v-main-operate-item :imgSrc="itemList.see.imgSrc" :text="itemList.see.text" @toPage="toPage('table')" :number="itemList.see.number"
 				 :isWarning="itemList.see.isWarning"></v-main-operate-item>
 			</view>
 			<view class="operate">
@@ -89,12 +89,17 @@
 						number: '',
 						isWarning: false
 					}
-				}
+				},
+				chars: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 			};
+		},
+		mounted() {
+			this.randomString(16,this.chars)
 		},
 		methods: {
 			// 跳转页面
 			toPage(value) {
+<<<<<<< HEAD
 				switch (value) {
 					case 'approve':
 						// 审批
@@ -112,6 +117,20 @@
 						// 单据编辑
 						break
 				}
+=======
+					uni.navigateTo({
+						url: '../'+value+'/index',
+						success: res => {},
+						fail: () => {},
+						complete: () => {}
+					});
+			},
+			randomString(length, chars) {
+			    var result = ''
+			    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)]
+				console.log('result',result);
+			    return result
+>>>>>>> b85f97e91b8c66e4a7c3409079c8290e238ef330
 			}
 		}
 	}
